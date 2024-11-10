@@ -1,0 +1,96 @@
+[gd_scene load_steps=20 format=3 uid="uid://belh1ykaryllh"]
+
+[ext_resource type="Texture2D" uid="uid://djsxs51fm5qkn" path="res://sprites/attack1/Battlemage Attack B1.png" id="1_li47k"]
+[ext_resource type="Script" path="res://player.gd" id="1_p45ec"]
+[ext_resource type="Texture2D" uid="uid://b37o1rsqt0kki" path="res://sprites/attack1/Battlemage Attack B2.png" id="2_wl8rg"]
+[ext_resource type="Texture2D" uid="uid://bmelw0mmkjbkp" path="res://sprites/attack1/Battlemage Attack B3.png" id="3_xct1h"]
+[ext_resource type="Texture2D" uid="uid://d3bct2gvw2q44" path="res://sprites/attack1/Battlemage Attack B4.png" id="4_w5aih"]
+[ext_resource type="Texture2D" uid="uid://byohcorbdxthy" path="res://sprites/attack1/Battlemage Attack B5.png" id="5_x2pwv"]
+[ext_resource type="Texture2D" uid="uid://v8jkgs4v4r72" path="res://sprites/attack1/Battlemage Attack B6.png" id="6_8t203"]
+[ext_resource type="Texture2D" uid="uid://cpr031haufpk" path="res://sprites/attack1/Battlemage Attack B7.png" id="7_b24pc"]
+[ext_resource type="Texture2D" uid="uid://b6posw0w8hiil" path="res://sprites/attack1/Battlemage Attack B8.png" id="8_afbta"]
+[ext_resource type="Texture2D" uid="uid://4a0wtq2a4jtm" path="res://sprites/idle/Battlemage Idle1.png" id="9_pk3gf"]
+[ext_resource type="Texture2D" uid="uid://dv55khfy4juem" path="res://sprites/idle/Battlemage Idle2.png" id="10_7np85"]
+[ext_resource type="Texture2D" uid="uid://dk0ejscl5l7we" path="res://sprites/idle/Battlemage Idle3.png" id="11_p3n3l"]
+[ext_resource type="Texture2D" uid="uid://dq40yndva2c1m" path="res://sprites/idle/Battlemage Idle4.png" id="12_3ll58"]
+[ext_resource type="Texture2D" uid="uid://bdbjuete8y8a5" path="res://sprites/idle/Battlemage Idle5.png" id="13_m2sgn"]
+[ext_resource type="Texture2D" uid="uid://dger6qlhet6o6" path="res://sprites/idle/Battlemage Idle6.png" id="14_niueo"]
+[ext_resource type="Texture2D" uid="uid://ufq3tm8y3riw" path="res://sprites/idle/Battlemage Idle7.png" id="15_ojf5f"]
+[ext_resource type="Texture2D" uid="uid://d2bi1apydiksw" path="res://sprites/idle/Battlemage Idle8.png" id="16_7sc4q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ascox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_li47k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wl8rg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xct1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w5aih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x2pwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8t203")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b24pc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_afbta")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pk3gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7np85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p3n3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3ll58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_m2sgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_niueo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ojf5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7sc4q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5celd"]
+radius = 13.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_p45ec")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ascox")
+animation = &"attack"
+frame_progress = 0.361116
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10)
+shape = SubResource("CapsuleShape2D_5celd")
