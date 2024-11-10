@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_pawte"]
 
 [sub_resource type="Gradient" id="Gradient_fxb1l"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_feg5i"]
 gradient = SubResource("Gradient_fxb1l")
@@ -24,6 +25,17 @@ texture = SubResource("GradientTexture2D_feg5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 scale = Vector2(9.62, 0.5)
+shape = SubResource("RectangleShape2D_7ixcw")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(576, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+scale = Vector2(10, 0.5)
+texture = SubResource("GradientTexture2D_feg5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+scale = Vector2(3.25, 0.5)
 shape = SubResource("RectangleShape2D_7ixcw")
 
 [node name="Player" type="CharacterBody2D" parent="."]
