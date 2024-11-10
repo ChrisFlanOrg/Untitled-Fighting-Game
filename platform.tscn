@@ -12,9 +12,9 @@ size = Vector2(194, 20)
 [node name="Platform" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10, 0.5)
+scale = Vector2(5, 0.5)
 texture = SubResource("GradientTexture2D_feg5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(3.25, 0.5)
+scale = Vector2(1.7, 0.5)
 shape = SubResource("RectangleShape2D_7ixcw")
