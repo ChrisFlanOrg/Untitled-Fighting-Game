@@ -24,7 +24,7 @@ export class ConnectionManager {
 
 	static connect() {
 		// Create WebSocket connection.
-		this.socket = new WebSocket(`ws://${window.location.hostname}:8081`);
+		this.socket = new WebSocket(`wss://${window.location.hostname}:8081/test`);
 
 		this.socket.addEventListener("open", () => {
 			console.log("Open!");

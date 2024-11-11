@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjaq3iake2tdi"]
+[gd_scene load_steps=8 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
-[ext_resource type="PackedScene" uid="uid://dvdbs16e8p1ba" path="res://platform.tscn" id="1_g5dwr"]
-[ext_resource type="PackedScene" uid="uid://bq1yxbva45yge" path="res://player.tscn" id="3_xp57j"]
+[ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
+[ext_resource type="Script" path="res://game.gd" id="1_lbt8p"]
+[ext_resource type="PackedScene" uid="uid://belh1ykaryllh" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
-[ext_resource type="PackedScene" uid="uid://d3p1cu0xlcajp" path="res://boundary.tscn" id="6_5r0aj"]
-[ext_resource type="PackedScene" path="res://sushi.tscn" id="6_mjlyl"]
+[ext_resource type="PackedScene" path="res://boundary.tscn" id="6_5r0aj"]
+[ext_resource type="PackedScene" uid="uid://cfl50ku7xs8p4" path="res://spawn_point.tscn" id="7_p2pug"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_locations_group")]
+script = ExtResource("1_lbt8p")
+player_scene = ExtResource("3_xp57j")
+spawn_locations_group = NodePath("SpawnLocations")
 
 [node name="Floors" type="Node2D" parent="."]
 
@@ -88,30 +92,28 @@ z_index = 0
 position = Vector2(303, 197)
 script = ExtResource("4_pvqfg")
 
-[node name="Boundary" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+[node name="Boundary" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(310, -41)
-player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
-[node name="Boundary2" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+[node name="Boundary2" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(294, 426)
-player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
-[node name="Boundary3" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+[node name="Boundary3" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(-131, 237)
 rotation = 1.5708
-player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
-[node name="Boundary4" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+[node name="Boundary4" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(745, 123)
 rotation = 1.5708
-player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
 [node name="Position2D" type="Node2D" parent="."]
 position = Vector2(144, 168)
 
-[node name="Player" parent="." instance=ExtResource("6_mjlyl")]
-position = Vector2(170, 199)
+[node name="SpawnLocations" type="Node2D" parent="."]
+
+[node name="SpawnPoint" parent="SpawnLocations" instance=ExtResource("7_p2pug")]
+position = Vector2(145, 230)

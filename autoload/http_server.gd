@@ -1,27 +1,33 @@
 extends Node
 
+static var crypto = Crypto.new()
+# Generate 4096 bits RSA key.
+static var key = crypto.generate_rsa(4096)
+# Generate self-signed certificate using the given key.
+static var cert = crypto.generate_self_signed_certificate(key, "CN=example.com,O=A Game Company,C=IT")
+
 var server: TCPServer
-var connection: StreamPeerTCP
+var connection: StreamPeerTLS
 var server_thread: Thread
 
 var time: int
 var req_pos: int
 var req_buf: PackedByteArray
 
-const HTTP_HEADER = """HTTP/1.1 200 OK
-Content-Type: %s
-
-
+const HTTP_HEADER = """HTTP/1.1 200 OK\r
+Content-Type: %s\r
+\r
+\r
 """
 
-const NOT_FOUND = """HTTP/1.1 404 Not Found
-
-
+const NOT_FOUND = """HTTP/1.1 404 Not Found\r
+\r
+\r
 """
 
 func _init():
 	server = TCPServer.new()
-	connection = StreamPeerTCP.new()
+	connection = StreamPeerTLS.new()
 	server_thread = Thread.new()
 	req_buf.resize(4096)
 
@@ -35,7 +41,7 @@ func start():
 	server_thread.start(_server_thread_poll.bind())
 
 func _clear_client():
-	connection = StreamPeerTCP.new();
+	connection = StreamPeerTLS.new()
 	req_buf.fill(0)
 	time = 0;
 	req_pos = 0;
@@ -90,7 +96,9 @@ func poll():
 	if (connection.get_status() == StreamPeerTCP.STATUS_NONE):
 		if (!server.is_connection_available()):
 			return
-		connection = server.take_connection()
+		var raw_connection = server.take_connection()
+		connection = StreamPeerTLS.new()
+		connection.accept_stream(raw_connection, TLSOptions.server(HttpServer.key, HttpServer.cert))
 		time = Time.get_ticks_usec()
 
 	if (Time.get_ticks_usec() - time > 1000000):

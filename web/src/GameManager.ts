@@ -181,17 +181,37 @@ export class GameManager {
 		}
 	}
 
+	static getDeviceMovePermission() {
+		if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( (DeviceMotionEvent as any).requestPermission ) === "function" ) {
+        // (optional) Do something before API request prompt.
+        (DeviceMotionEvent as any).requestPermission()
+            .then((response: any) => {
+            // (optional) Do something after API prompt dismissed.
+            if ( response == "granted" ) {
+            } else {
+	            //alert(response);
+            }
+        })
+            .catch( console.error )
+    } else {
+        //alert( "DeviceMotionEvent is not defined" );
+    }
+	}
+
 	static setup() {
-		$("#player_name_submit").click(() => {
+		console.log(document.getElementById("player_name_submit"))
+		document.getElementById("player_name_submit")!.onclick = (e: MouseEvent) => {
 			this.generateNewPlayerInfo();
 			this.setState(GameState.Loading);
+			this.getDeviceMovePermission();
 			ConnectionManager.connect();
-		});
+		};
 
-		$("#rejoin").click(() => {
+		document.getElementById("rejoin")!.addEventListener("click", (() => {
 			this.setState(GameState.Loading);
+			this.getDeviceMovePermission();
 			ConnectionManager.connect();
-		});
+		}));
 
 		$("#join_as_new_player").click(() => {
 			this.clearPlayerInfo();

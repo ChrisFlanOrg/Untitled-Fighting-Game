@@ -61,6 +61,9 @@ func _on_client_message(peer_id: int, message):
 					players_by_id[data.player_id] = Player.new(data.player_id, peer_id, data.player_name)
 					player_slots[next_idx as int] = data.player_id
 					peer_id_to_player_id[peer_id] = data.player_id
+					var scene = get_tree().current_scene
+					if scene.name == "Game" and peer_id_to_player_id.has(peer_id):
+						scene.player_joined(peer_id_to_player_id[peer_id])
 			else:
 				WebsocketServer.peer_disconnect(peer_id)
 		else:

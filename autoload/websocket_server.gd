@@ -5,16 +5,23 @@ signal message_received(peer_id: int, message)
 signal client_connected(peer_id: int)
 signal client_disconnected(peer_id: int)
 
+static var crypto = Crypto.new()
+# Generate 4096 bits RSA key.
+static var key = crypto.generate_rsa(4096)
+# Generate self-signed certificate using the given key.
+static var cert = crypto.generate_self_signed_certificate(key, "CN=example.com,O=A Game Company,C=IT")
+
 @export var handshake_headers := PackedStringArray()
 @export var supported_protocols: PackedStringArray
 @export var handshake_timout := 3000
-@export var use_tls := false
-@export var tls_cert: X509Certificate
-@export var tls_key: CryptoKey
 @export var refuse_new_connections := false:
 	set(refuse):
 		if refuse:
 			pending_peers.clear()
+
+var use_tls := true
+var tls_cert: X509Certificate = WebSocketServer.cert
+var tls_key: CryptoKey = WebSocketServer.key
 
 const PING_TIMEOUT_SECS = 10
 const PING_RETRY_TIME_SECS = 2
@@ -26,7 +33,6 @@ class PendingPeer:
 	var ws: WebSocketPeer
 
 	func _init(p_tcp: StreamPeerTCP):
-		print("New pending Peer")
 		tcp = p_tcp
 		connection = p_tcp
 		connect_time = Time.get_ticks_msec()
@@ -177,7 +183,7 @@ func _connect_pending(p: PendingPeer) -> bool:
 		elif state != WebSocketPeer.STATE_CONNECTING:
 			return true # Failure.
 		return false # Still connecting.
-	elif p.tcp.get_status() != StreamPeerTCP.STATUS_CONNECTED:
+	elif p.tcp.get_status() != StreamPeerTLS.STATUS_CONNECTED:
 		return true # TCP disconnected.
 	elif not use_tls:
 		# TCP is ready, create WS peer
@@ -188,18 +194,61 @@ func _connect_pending(p: PendingPeer) -> bool:
 		if p.connection == p.tcp:
 			assert(tls_key != null and tls_cert != null)
 			var tls = StreamPeerTLS.new()
-			tls.accept_stream(p.tcp, TLSOptions.server(tls_key, tls_cert))
+			tls.accept_stream(p.tcp, TLSOptions.server(WebSocketServer.key, WebSocketServer.cert))
 			p.connection = tls
 		p.connection.poll()
 		var status = p.connection.get_status()
+		print(status)
 		if status == StreamPeerTLS.STATUS_CONNECTED:
-			p.ws = _create_peer()
-			p.ws.accept_stream(p.connection)
-			return false # WebSocketPeer connection is pending.
+			if true: #_has_upgrade(p.connection):
+				print("upgrade!")
+				p.ws = _create_peer()
+				p.ws.accept_stream(p.connection)
+				print("done upgrade!")
+				return false # WebSocketPeer connection is pending.
+			else:
+				return true
 		if status != StreamPeerTLS.STATUS_HANDSHAKING:
+			print("failure")
 			return true # Failure.
 		return false
 
+var req_pos: int
+var req_buf: PackedByteArray
+
+func _has_upgrade(connection: StreamPeerTLS):
+	req_pos = 0
+	req_buf.fill(0)
+	while (true):
+		var l = req_pos - 1;
+		if (l > 3):
+			var cm0 = String.chr(req_buf[l-0])
+			var cm1 = String.chr(req_buf[l-1])
+			var cm2 = String.chr(req_buf[l-2])
+			var cm3 = String.chr(req_buf[l-3])
+			if (cm0 == '\n' && cm1 == '\r' && cm2 == '\n' && cm3 == '\r'):
+				var lines = req_buf.get_string_from_utf8().split("\r\n")
+
+				for line in lines:
+					print(line)
+				return true
+
+		# ERR_FAIL_COND(req_pos >= 4096)
+		var result = connection.get_partial_data(1)
+		var err = result[0]
+		var partial_data = result[1]
+		if (err != OK):
+			# Got an error
+			return false
+		elif (partial_data.size() != 1):
+			# Busy, wait next poll
+			continue
+		req_buf[req_pos] = partial_data[0]
+		req_pos += partial_data.size();
+
+func _init():
+	req_buf.resize(32768)
+	req_buf.fill(0)
 
 func _process(delta):
 	poll()
