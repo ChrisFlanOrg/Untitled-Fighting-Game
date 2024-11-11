@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3eimoicngs4o"]
+[gd_scene load_steps=6 format=3 uid="uid://cuuxrkgqij6ig"]
 
 [ext_resource type="Texture2D" uid="uid://vlegj4eyd3ml" path="res://sprites/spike.png" id="1_hlkkd"]
 [ext_resource type="Script" path="res://hitbox/hitbox.gd" id="1_y21fm"]

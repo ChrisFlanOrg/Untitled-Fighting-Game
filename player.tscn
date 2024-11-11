@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://belh1ykaryllh"]
+[gd_scene load_steps=61 format=3 uid="uid://belh1ykaryllh"]
 
 [ext_resource type="Texture2D" uid="uid://djsxs51fm5qkn" path="res://sprites/attack1/Battlemage Attack B1.png" id="1_li47k"]
 [ext_resource type="Script" path="res://player.gd" id="1_p45ec"]
