@@ -48,3 +48,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta*SPEED)
 	move_and_slide()
+
+func take_damage(knockback: int, angle: int) -> void:
+	velocity.y = -4 * knockback
