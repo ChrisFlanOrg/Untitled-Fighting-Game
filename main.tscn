@@ -1,20 +1,66 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" path="res://floor.tscn" id="1_28al0"]
-[ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
+[ext_resource type="PackedScene" path="res://platform.tscn" id="1_g5dwr"]
 [ext_resource type="PackedScene" uid="uid://belh1ykaryllh" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Floor" parent="." instance=ExtResource("1_28al0")]
+[node name="Player" parent="." instance=ExtResource("3_xp57j")]
+position = Vector2(99.42, 83.12)
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="Floor" parent="Floors" instance=ExtResource("1_28al0")]
 position = Vector2(320, 346)
 
-[node name="Platform" parent="." instance=ExtResource("1_g5dwr")]
+[node name="Floor2" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(224, 346)
+
+[node name="Floor3" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(128, 346)
+
+[node name="Floor4" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(32, 346)
+
+[node name="Floor6" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(608, 346)
+
+[node name="Floor7" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(512, 346)
+
+[node name="Floor8" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(416, 346)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(270, 247)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("1_g5dwr")]
 position = Vector2(302, 247)
 
-[node name="Player" parent="." instance=ExtResource("3_xp57j")]
-position = Vector2(344, 244)
+[node name="Platform3" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(334, 247)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(111, 200)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(143, 200)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(175, 200)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(444, 197)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(476, 197)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("1_g5dwr")]
+position = Vector2(508, 197)
 
 [node name="Dummy" parent="." instance=ExtResource("3_xp57j")]
 position = Vector2(303, 197)
