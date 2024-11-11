@@ -15,6 +15,12 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+HttpServer="*res://autoload/http_server.gd"
+PlayerManager="*res://autoload/player_manager.gd"
+WebsocketServer="*res://autoload/websocket_server.gd"
+
 [display]
 
 window/size/viewport_width=640
