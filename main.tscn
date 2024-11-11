@@ -2,28 +2,86 @@
 
 [ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
 [ext_resource type="PackedScene" uid="uid://dvdbs16e8p1ba" path="res://platform.tscn" id="1_g5dwr"]
-[ext_resource type="Script" path="res://game.gd" id="1_qheri"]
 [ext_resource type="PackedScene" uid="uid://bq1yxbva45yge" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
 [ext_resource type="PackedScene" uid="uid://d3p1cu0xlcajp" path="res://boundary.tscn" id="6_5r0aj"]
-[ext_resource type="PackedScene" uid="uid://cuuxrkgqij6ig" path="res://hazard.tscn" id="5_qrixr"]
+[ext_resource type="PackedScene" path="res://sushi.tscn" id="6_mjlyl"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_xp57j")]
-position = Vector2(99.42, 83.12)
 
 [node name="Floors" type="Node2D" parent="."]
 
 [node name="Floor" parent="Floors" instance=ExtResource("1_28al0")]
-position = Vector2(320, 346)
+position = Vector2(366, 383)
+
+[node name="Floor2" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(270, 383)
+
+[node name="Floor5" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(558, 383)
+
+[node name="Floor6" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(462, 383)
+
+[node name="Floor3" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(174, 383)
+
+[node name="Floor4" parent="Floors" instance=ExtResource("1_28al0")]
+position = Vector2(78, 383)
 
 [node name="Platform" parent="." instance=ExtResource("1_g5dwr")]
-position = Vector2(302, 247)
+position = Vector2(286, 280)
 
-[node name="Player" parent="." instance=ExtResource("3_xp57j")]
-z_index = 0
-position = Vector2(344, 244)
+[node name="Platform2" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(318, 280)
+
+[node name="Platform3" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(350, 280)
+
+[node name="Platform4" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(144, 244)
+
+[node name="Platform5" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(176, 244)
+
+[node name="Platform6" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(208, 244)
+
+[node name="Platform7" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(432, 236)
+
+[node name="Platform8" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(464, 236)
+
+[node name="Platform9" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(496, 236)
+
+[node name="Platform10" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(289, 155)
+
+[node name="Platform11" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(321, 155)
+
+[node name="Platform12" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(353, 155)
+
+[node name="Platform13" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(144, 98)
+
+[node name="Platform14" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(176, 98)
+
+[node name="Platform15" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(208, 98)
+
+[node name="Platform16" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(432, 100)
+
+[node name="Platform17" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(464, 100)
+
+[node name="Platform18" parent="." instance=ExtResource("1_g5dwr")]
+position = Vector2(496, 100)
 
 [node name="Dummy" parent="." instance=ExtResource("3_xp57j")]
 z_index = 0
@@ -32,25 +90,28 @@ script = ExtResource("4_pvqfg")
 
 [node name="Boundary" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(310, -41)
-player = NodePath("../Player")
+player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
 [node name="Boundary2" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(294, 426)
-player = NodePath("../Player")
+player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
 [node name="Boundary3" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(-131, 237)
 rotation = 1.5708
-player = NodePath("../Player")
+player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
 [node name="Boundary4" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(745, 123)
 rotation = 1.5708
-player = NodePath("../Player")
+player = NodePath("")
 respawn_position = NodePath("../Position2D")
 
 [node name="Position2D" type="Node2D" parent="."]
-position = Vector2(144, 135)
+position = Vector2(144, 168)
+
+[node name="Player" parent="." instance=ExtResource("6_mjlyl")]
+position = Vector2(170, 199)
