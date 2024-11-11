@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=640
 window/size/viewport_height=360
 
+[layer_names]
+
+2d_physics/layer_1="game_world"
+2d_physics/layer_2="hitboxes"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
