@@ -15,8 +15,6 @@ run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
-<<<<<<< Updated upstream
-=======
 [autoload]
 
 HttpServer="*res://autoload/http_server.gd"
@@ -47,7 +45,11 @@ Jump={
 2d_physics/layer_1="game_world"
 2d_physics/layer_2="hitboxes"
 
->>>>>>> Stashed changes
+[layer_names]
+
+2d_physics/layer_1="game_world"
+2d_physics/layer_2="hitboxes"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfu3du8iqtgv8"]
+
+[ext_resource type="Texture2D" uid="uid://c3w3qxk5rh078" path="res://sprites/SimpleTiles_allColors.png" id="1_ty26b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ixcw"]
+size = Vector2(96, 96)
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ty26b")
+region_enabled = true
+region_rect = Rect2(32, 0, 96, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ixcw")

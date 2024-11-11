@@ -1,0 +1,197 @@
+* {
+	font-size: 4vw;
+	user-select: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+.page {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.page.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#setup_page > * > * {
+	margin: 2vw;
+}
+
+#rejoin_page input {
+	margin: 3vh 0;
+	padding: 1vh;
+}
+
+.rejoin_page_button_container {
+	display: flex;
+	justify-content: center;
+}
+
+#play_page {
+	flex-direction: column;
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(1, 1, 1,0.5);
+	z-index: 999;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#overlay_box {
+	background: #FFF;
+	border-radius: 0.5vh;
+	box-shadow: 0px 10px 10px #666;
+	width: 30vh;
+  height: 20vh;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#gamestate_area {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-height: 25%;
+	min-height: 10%;
+	border-bottom: 0.5vh double black;
+	box-shadow: 0px 10px 10px #AAA;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+#card_area {
+	flex: 1 0;
+	overflow-y: scroll;
+	background-color: #EEE;
+}
+
+#card_area .action {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	min-height: 8vh;
+	box-shadow: inset 0 -0.5vh 0 lightgray;
+	background-color: #FFF;
+}
+
+#card_area .action:first-child {
+	height: 1vh;
+  min-height: 0;
+  margin-top: 3vh;
+	background-color: #EEE;
+}
+
+#card_area .action:last-child {
+	margin-bottom: 5vh;
+}
+
+#card_area .action.selected {
+	box-shadow: inset 0 -0.5vh 0 orangered;
+}
+
+#card_area .action.selected.disabled {
+	background-color: #DBB;
+}
+
+#card_area .label {
+	margin: 0;
+	margin-left: 1vh;
+}
+
+#card_area input {
+	height: 3vw;
+	margin-left: 1vh;
+	min-width: 4vh;
+  min-height: 4vh;
+}
+
+#card_area .action input:disabled {
+	visibility: hidden;
+}
+
+#card_area .cancel {
+	margin-left: 2vh;
+}
+
+#actions_area {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	max-height: 25%;
+	min-height: 10%;
+	border-top: 0.5vh double black;
+	box-shadow: 0px -10px 10px #AAA;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+#timer * {
+	font-size: 8vh;
+}
+
+#colon {
+	margin-left: -0.75vh;
+  margin-right: -0.75vh;
+}
+
+#actions_area > * {
+	margin: 2vw;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1;
+}
+
+#actions_area > * > * {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#actions_area input {
+	aspect-ratio: 1;
+	height: 100%;
+}
+
+#lobby_page #arena {
+	background: green;
+	width: 100%;
+	height: 100%;
+}
+
+#lobby_page #player {
+	background: red;
+	width: 50px;
+	height: 50px;
+}
+
+#lobby_page #info {
+	position: absolute;
+	left: 0;
+	top: 0;
+}

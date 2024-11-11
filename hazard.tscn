@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuuxrkgqij6ig"]
+
+[ext_resource type="Texture2D" uid="uid://vlegj4eyd3ml" path="res://sprites/spike.png" id="1_hlkkd"]
+[ext_resource type="Script" path="res://hitbox/hitbox.gd" id="1_y21fm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luhkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlkkd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5mge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jis6w"]
+
+[node name="Hazard" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+metadata/knockback = 50
+metadata/angle = 45
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_luhkt")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_w5mge")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("1_y21fm")
+
+[node name="HitboxGeometry" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_jis6w")
