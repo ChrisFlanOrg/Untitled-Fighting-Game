@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" path="res://floor.tscn" id="1_28al0"]
-[ext_resource type="PackedScene" path="res://platform.tscn" id="1_g5dwr"]
+[ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
 [ext_resource type="PackedScene" uid="uid://belh1ykaryllh" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
 
@@ -14,12 +14,8 @@ position = Vector2(320, 346)
 position = Vector2(302, 247)
 
 [node name="Player" parent="." instance=ExtResource("3_xp57j")]
-position = Vector2(99.42, 83.12)
-collision_layer = 1
-collision_mask = 1
+position = Vector2(344, 244)
 
 [node name="Dummy" parent="." instance=ExtResource("3_xp57j")]
-position = Vector2(200, 0)
-collision_layer = 1
-collision_mask = 1
+position = Vector2(303, 197)
 script = ExtResource("4_pvqfg")
