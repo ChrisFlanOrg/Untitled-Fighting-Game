@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="./index.js" ></script>
+		<link rel="stylesheet" href="./client.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	</head>
+	<body>
+		<div class="page centered" id="loading_page">
+			<div>
+				Loading...
+			</div>
+		</div>
+		<div class="page centered" id="setup_page" style="display:none">
+			<div>
+				<div>
+					<input id="player_name" type="text" placeholder="Player name">
+				</div>
+				<div>
+					<input id="player_name_submit" type="button" value="Submit">
+				</div>
+			</div>
+		</div>
+		<div class="page centered" id="rejoin_page" style="display:none">
+			<div>
+				<div class="rejoin_page_button_container">
+					<input id="rejoin" type="button" value="Rejoin as ---">
+				</div>
+				<div class="rejoin_page_button_container">
+					<input id="join_as_new_player" type="button" value="Join as New Player">
+				</div>
+			</div>
+		</div>
+		<div class="page centered" id="lobby_page" style="display:none">
+		</div>
+		<div class="page" id="play_page" style="display:none">
+		</div>
+	</body>
+</html>
