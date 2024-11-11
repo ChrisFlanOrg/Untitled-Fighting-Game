@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://belh1ykaryllh"]
+[gd_scene load_steps=26 format=3 uid="uid://belh1ykaryllh"]
 
 [ext_resource type="Texture2D" uid="uid://djsxs51fm5qkn" path="res://sprites/attack1/Battlemage Attack B1.png" id="1_li47k"]
 [ext_resource type="Script" path="res://player.gd" id="1_p45ec"]
@@ -83,14 +83,88 @@ animations = [{
 radius = 13.0
 height = 36.0
 
+[sub_resource type="Animation" id="Animation_5ygtx"]
+resource_name = "Idle"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_f0wp4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00tqm"]
+_data = {
+"Idle": SubResource("Animation_5ygtx"),
+"RESET": SubResource("Animation_f0wp4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dk7ba"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fhmdd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6x0mx"]
+states/Idle/node = SubResource("AnimationNodeAnimation_dk7ba")
+states/Idle/position = Vector2(386, 99.5625)
+states/Start/position = Vector2(187, 99.125)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fhmdd")]
+
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
+position = Vector2(-1, -24)
 script = ExtResource("1_p45ec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ascox")
-animation = &"attack"
-frame_progress = 0.361116
+animation = &"idle"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 10)
 shape = SubResource("CapsuleShape2D_5celd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_00tqm")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_6x0mx")
+anim_player = NodePath("../AnimationPlayer")
