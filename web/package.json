@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun build src/index.ts --outdir ./out --watch",
+    "build": "bun build src/index.ts --outdir ./out"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/jquery": "^3.5.32"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@methodswithclass/accelerometer": "^3.3.0",
+    "jquery": "^3.7.1",
+    "uuid": "^11.0.2"
+  }
+}
