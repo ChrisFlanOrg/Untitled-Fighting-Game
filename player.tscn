@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://belh1ykaryllh"]
+[gd_scene load_steps=61 format=3 uid="uid://mu6ao2kqd4c8"]
 
 [ext_resource type="Texture2D" uid="uid://djsxs51fm5qkn" path="res://sprites/sample/attack/Battlemage Attack B1.png" id="1_li47k"]
 [ext_resource type="Script" path="res://player.gd" id="1_p45ec"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://l7cfgsfa77dw" path="res://sprites/sample/hit/Battlemage Stop3.png" id="16_28q8g"]
 [ext_resource type="Texture2D" uid="uid://doicax1faogdu" path="res://sprites/sample/hit/Battlemage Stop4.png" id="17_sf4jv"]
 [ext_resource type="Texture2D" uid="uid://cvvr60cvxgnio" path="res://sprites/sample/hit/Battlemage Stop5.png" id="18_5bj8k"]
+[ext_resource type="Script" path="res://hitbox/hurtbox.gd" id="18_5que4"]
 [ext_resource type="Texture2D" uid="uid://b21n4jtjjdxuv" path="res://sprites/sample/jump_downward/Battlemage Foward down1.png" id="27_8qnxp"]
 [ext_resource type="Texture2D" uid="uid://uuo7pyi8q1xj" path="res://sprites/sample/jump_downward/Battlemage Foward down2.png" id="28_j45gj"]
 [ext_resource type="Texture2D" uid="uid://euy8t107h6mf" path="res://sprites/sample/jump_downward/Battlemage Foward down3.png" id="29_ab17m"]
