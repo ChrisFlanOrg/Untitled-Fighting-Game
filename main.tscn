@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjaq3iake2tdi"]
+[gd_scene load_steps=7 format=3 uid="uid://bjaq3iake2tdi"]
 
-[ext_resource type="PackedScene" path="res://floor.tscn" id="1_28al0"]
-[ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
-[ext_resource type="PackedScene" uid="uid://belh1ykaryllh" path="res://player.tscn" id="3_xp57j"]
+[ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
+[ext_resource type="PackedScene" uid="uid://dvdbs16e8p1ba" path="res://platform.tscn" id="1_g5dwr"]
+[ext_resource type="Script" path="res://game.gd" id="1_qheri"]
+[ext_resource type="PackedScene" uid="uid://bq1yxbva45yge" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
+[ext_resource type="PackedScene" uid="uid://d3p1cu0xlcajp" path="res://boundary.tscn" id="6_5r0aj"]
 [ext_resource type="PackedScene" uid="uid://cuuxrkgqij6ig" path="res://hazard.tscn" id="5_qrixr"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Floor" parent="." instance=ExtResource("1_28al0")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_xp57j")]
+position = Vector2(99.42, 83.12)
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="Floor" parent="Floors" instance=ExtResource("1_28al0")]
 position = Vector2(320, 346)
 
 [node name="Platform" parent="." instance=ExtResource("1_g5dwr")]
@@ -23,9 +30,27 @@ z_index = 0
 position = Vector2(303, 197)
 script = ExtResource("4_pvqfg")
 
-[node name="Right Spike (higher knock)" parent="." instance=ExtResource("5_qrixr")]
-position = Vector2(399, 319)
-metadata/knockback = 100
+[node name="Boundary" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+position = Vector2(310, -41)
+player = NodePath("../Player")
+respawn_position = NodePath("../Position2D")
 
-[node name="Left Spike" parent="." instance=ExtResource("5_qrixr")]
-position = Vector2(238, 320)
+[node name="Boundary2" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+position = Vector2(294, 426)
+player = NodePath("../Player")
+respawn_position = NodePath("../Position2D")
+
+[node name="Boundary3" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+position = Vector2(-131, 237)
+rotation = 1.5708
+player = NodePath("../Player")
+respawn_position = NodePath("../Position2D")
+
+[node name="Boundary4" parent="." node_paths=PackedStringArray("player", "respawn_position") instance=ExtResource("6_5r0aj")]
+position = Vector2(745, 123)
+rotation = 1.5708
+player = NodePath("../Player")
+respawn_position = NodePath("../Position2D")
+
+[node name="Position2D" type="Node2D" parent="."]
+position = Vector2(144, 135)
