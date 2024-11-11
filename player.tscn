@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://belh1ykaryllh"]
+[gd_scene load_steps=59 format=3 uid="uid://belh1ykaryllh"]
 
 [ext_resource type="Texture2D" uid="uid://djsxs51fm5qkn" path="res://sprites/attack1/Battlemage Attack B1.png" id="1_li47k"]
 [ext_resource type="Script" path="res://player.gd" id="1_p45ec"]
@@ -469,10 +469,6 @@ advance_condition = &"attacking"
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kjbgd"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ukwwf"]
 switch_mode = 2
 advance_mode = 2
@@ -503,11 +499,11 @@ states/Hit/position = Vector2(310.44, 231.5)
 states/Idle/node = SubResource("AnimationNodeAnimation_dk7ba")
 states/Idle/position = Vector2(386, 99.9453)
 "states/Jump Downward/node" = SubResource("AnimationNodeAnimation_opxql")
-"states/Jump Downward/position" = Vector2(684.44, 232.625)
+"states/Jump Downward/position" = Vector2(684.44, 231.781)
 "states/Jump Upward/node" = SubResource("AnimationNodeAnimation_76sq7")
 "states/Jump Upward/position" = Vector2(488.5, 233.75)
 states/Start/position = Vector2(187, 99.125)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fhmdd"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_74504"), "Jump Upward", "Jump Downward", SubResource("AnimationNodeStateMachineTransition_upi47"), "Jump Downward", "Grounded", SubResource("AnimationNodeStateMachineTransition_kjbgd"), "Grounded", "Idle", SubResource("AnimationNodeStateMachineTransition_ukwwf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_0gx3u"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_a5eb7"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_fea20"), "Idle", "Jump Upward", SubResource("AnimationNodeStateMachineTransition_us3ny")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fhmdd"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_74504"), "Jump Upward", "Jump Downward", SubResource("AnimationNodeStateMachineTransition_upi47"), "Grounded", "Idle", SubResource("AnimationNodeStateMachineTransition_ukwwf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_0gx3u"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_a5eb7"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_fea20"), "Idle", "Jump Upward", SubResource("AnimationNodeStateMachineTransition_us3ny")]
 graph_offset = Vector2(101.28, -1.45393e-05)
 
 [node name="Player" type="CharacterBody2D"]
