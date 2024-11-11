@@ -50,4 +50,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage(knockback: int, angle: int) -> void:
-	velocity.y = -4 * knockback
+	velocity.x = knockback * cos(deg_to_rad(angle))
+	velocity.y = - knockback * sin(deg_to_rad(angle))

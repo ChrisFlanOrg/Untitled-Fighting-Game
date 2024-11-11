@@ -23,9 +23,14 @@ z_index = 0
 position = Vector2(303, 197)
 script = ExtResource("4_pvqfg")
 
-[node name="Right Spike (higher knock)" parent="." instance=ExtResource("5_qrixr")]
+[node name="Right Spike (pokier)" parent="." instance=ExtResource("5_qrixr")]
 position = Vector2(399, 319)
-metadata/knockback = 100
 
 [node name="Left Spike" parent="." instance=ExtResource("5_qrixr")]
 position = Vector2(238, 320)
+
+[node name="Big Spike" parent="." instance=ExtResource("5_qrixr")]
+position = Vector2(399, 198)
+scale = Vector2(2, 2)
+metadata/knockback = 1000
+metadata/angle = -30
