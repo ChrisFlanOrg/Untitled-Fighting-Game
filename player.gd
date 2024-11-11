@@ -3,9 +3,18 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -500.0
+
+var has_double_jump = true
 
 var isJumping = false
+
+func jump(direction):
+	if is_on_floor() or has_double_jump:
+		if is_on_floor():
+			has_double_jump = false
+		velocity.x = direction.x*JUMP_VELOCITY
+		velocity.y = direction.y*JUMP_VELOCITY
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -14,6 +23,8 @@ func _physics_process(delta):
 	elif is_on_floor() && isJumping:
 		isJumping = false
 		anim_tree["parameters/playback"].travel("Grounded")
+	else:
+		has_double_jump = true
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -35,5 +46,5 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, delta*SPEED)
 	move_and_slide()
