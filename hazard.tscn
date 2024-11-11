@@ -21,8 +21,8 @@ animations = [{
 [node name="Hazard" type="StaticBody2D"]
 collision_layer = 0
 collision_mask = 0
-metadata/knockback = 50
-metadata/angle = 45
+metadata/knockback = 300
+metadata/angle = 90
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_luhkt")
