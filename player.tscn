@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://l7cfgsfa77dw" path="res://sprites/hit/Battlemage Stop3.png" id="16_28q8g"]
 [ext_resource type="Texture2D" uid="uid://doicax1faogdu" path="res://sprites/hit/Battlemage Stop4.png" id="17_sf4jv"]
 [ext_resource type="Texture2D" uid="uid://cvvr60cvxgnio" path="res://sprites/hit/Battlemage Stop5.png" id="18_5bj8k"]
+[ext_resource type="Script" path="res://hitbox/hurtbox.gd" id="18_5que4"]
 [ext_resource type="Texture2D" uid="uid://b21n4jtjjdxuv" path="res://sprites/jump_downward/Battlemage Foward down1.png" id="27_8qnxp"]
 [ext_resource type="Texture2D" uid="uid://uuo7pyi8q1xj" path="res://sprites/jump_downward/Battlemage Foward down2.png" id="28_j45gj"]
 [ext_resource type="Texture2D" uid="uid://euy8t107h6mf" path="res://sprites/jump_downward/Battlemage Foward down3.png" id="29_ab17m"]
@@ -506,9 +507,13 @@ states/Start/position = Vector2(187, 99.125)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fhmdd"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_74504"), "Jump Upward", "Jump Downward", SubResource("AnimationNodeStateMachineTransition_upi47"), "Grounded", "Idle", SubResource("AnimationNodeStateMachineTransition_ukwwf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_0gx3u"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_a5eb7"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_fea20"), "Idle", "Jump Upward", SubResource("AnimationNodeStateMachineTransition_us3ny")]
 graph_offset = Vector2(101.28, -1.45393e-05)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cktj4"]
+size = Vector2(36.25, 42)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(-1, -24)
+collision_layer = 3
 script = ExtResource("1_p45ec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -531,3 +536,10 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attacking = false
 parameters/conditions/hit = false
 parameters/conditions/jump = false
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("18_5que4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_cktj4")

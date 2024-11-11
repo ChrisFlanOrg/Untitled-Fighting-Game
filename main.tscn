@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://game.gd" id="1_qheri"]
 [ext_resource type="PackedScene" uid="uid://belh1ykaryllh" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
+[ext_resource type="PackedScene" uid="uid://c3eimoicngs4o" path="res://hazard.tscn" id="5_qrixr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qheri")
@@ -67,3 +68,10 @@ position = Vector2(508, 197)
 [node name="Dummy" parent="." instance=ExtResource("3_xp57j")]
 position = Vector2(303, 197)
 script = ExtResource("4_pvqfg")
+
+[node name="Right Spike (higher knock)" parent="." instance=ExtResource("5_qrixr")]
+position = Vector2(400, 320)
+metadata/knockback = 100
+
+[node name="Left Spike" parent="." instance=ExtResource("5_qrixr")]
+position = Vector2(240, 320)
