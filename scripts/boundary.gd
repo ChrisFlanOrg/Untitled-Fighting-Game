@@ -35,6 +35,7 @@ func kill_player(body) -> void:
 	var timer:SceneTreeTimer = get_tree().create_timer(2.0)  
 	timer.timeout.connect(func(): 
 		body.position = respawn_position.position
+		body.reset_damage()
 		print("Player has respawned.")
 	)
 

@@ -123,3 +123,9 @@ position = Vector2(477, 298)
 
 [node name="Hazard2" parent="." instance=ExtResource("7_nke1a")]
 position = Vector2(204, 298)
+
+[node name="Hazard3" parent="." instance=ExtResource("7_nke1a")]
+position = Vector2(46, 193)
+
+[node name="Hazard4" parent="." instance=ExtResource("7_nke1a")]
+position = Vector2(581, 154)

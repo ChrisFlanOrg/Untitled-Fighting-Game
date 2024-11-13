@@ -56,3 +56,7 @@ func take_damage(knockback: int, angle: int) -> void:
 	velocity.x = ((1 + player_damage / 10) * knockback) * cos(deg_to_rad(angle))
 	velocity.y = - ((1 + player_damage / 10) * knockback) * sin(deg_to_rad(angle))
 	damage_percentage.text = str(player_damage) + "%"
+	
+func reset_damage():
+	player_damage = 0
+	damage_percentage.text = "0%"
