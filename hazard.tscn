@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuuxrkgqij6ig"]
+[gd_scene load_steps=6 format=3 uid="uid://c2txm22bbdv4g"]
 
 [ext_resource type="Texture2D" uid="uid://vlegj4eyd3ml" path="res://sprites/spike.png" id="1_hlkkd"]
 [ext_resource type="Script" path="res://hitbox/hitbox.gd" id="1_y21fm"]
@@ -21,8 +21,8 @@ animations = [{
 [node name="Hazard" type="StaticBody2D"]
 collision_layer = 0
 collision_mask = 0
-metadata/knockback = 50
-metadata/angle = 45
+metadata/knockback = 300
+metadata/angle = 90
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_luhkt")
