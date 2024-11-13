@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgwvstnrmjtp6"]
+
+[ext_resource type="Script" path="res://explosion.gd" id="1_ocvsu"]
+
+[sub_resource type="Gradient" id="Gradient_mqg1b"]
+colors = PackedColorArray(0.894118, 0.976471, 0, 1, 1, 0.113725, 0.196078, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ey1ll"]
+gradient = SubResource("Gradient_mqg1b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d0tca"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+inherit_velocity_ratio = 30.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_ey1ll")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+scale = Vector2(5, 5)
+emitting = false
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_d0tca")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_ocvsu")

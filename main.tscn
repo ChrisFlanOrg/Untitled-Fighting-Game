@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjaq3iake2tdi"]
+[gd_scene load_steps=9 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
 [ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
 [ext_resource type="PackedScene" uid="uid://mu6ao2kqd4c8" path="res://player.tscn" id="3_xp57j"]
 [ext_resource type="Script" path="res://dummy.gd" id="4_pvqfg"]
 [ext_resource type="PackedScene" uid="uid://bxxbcgmy3a52b" path="res://boundary.tscn" id="6_5r0aj"]
+[ext_resource type="PackedScene" uid="uid://dgwvstnrmjtp6" path="res://explosion.tscn" id="6_5y6pq"]
 [ext_resource type="PackedScene" uid="uid://fpkjab5rag02" path="res://sushi.tscn" id="6_mjlyl"]
 [ext_resource type="PackedScene" uid="uid://c2txm22bbdv4g" path="res://hazard.tscn" id="7_nke1a"]
 
@@ -92,20 +93,24 @@ script = ExtResource("4_pvqfg")
 [node name="Boundary" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(310, -41)
 respawn_position = NodePath("../Position2D")
+deathParticle = ExtResource("6_5y6pq")
 
 [node name="Boundary2" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(294, 426)
 respawn_position = NodePath("../Position2D")
+deathParticle = ExtResource("6_5y6pq")
 
 [node name="Boundary3" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
-position = Vector2(-131, 237)
+position = Vector2(-76, 222)
 rotation = 1.5708
 respawn_position = NodePath("../Position2D")
+deathParticle = ExtResource("6_5y6pq")
 
 [node name="Boundary4" parent="." node_paths=PackedStringArray("respawn_position") instance=ExtResource("6_5r0aj")]
 position = Vector2(745, 123)
 rotation = 1.5708
 respawn_position = NodePath("../Position2D")
+deathParticle = ExtResource("6_5y6pq")
 
 [node name="Position2D" type="Node2D" parent="."]
 position = Vector2(144, 168)
