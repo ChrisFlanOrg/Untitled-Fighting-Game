@@ -21,7 +21,7 @@ animations = [{
 [node name="Hazard" type="StaticBody2D"]
 collision_layer = 0
 collision_mask = 0
-metadata/knockback = 300
+metadata/knockback = 100
 metadata/angle = 90
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

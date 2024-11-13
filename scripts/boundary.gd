@@ -15,15 +15,14 @@ func _on_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		# Kill the player (reset their position and handle death logic)
 		print("Player entered boundary")
-		kill_player()
+		kill_player(body)
 
 # Function to "kill" the player by resetting their position
-func kill_player() -> void:
-	if player:
-		# Reset the player's position
-		player.position = respawn_position.position
-		# You can add additional death logic here, such as resetting health, playing animations, etc.
-		print("Player has died and respawned.")
-		
-		# Emit the signal that the player has died (for other systems to listen to)
-		emit_signal("player_died")
+func kill_player(body) -> void:
+	# Reset the player's position
+	body.position = respawn_position.position
+	# You can add additional death logic here, such as resetting health, playing animations, etc.
+	print("Player has died and respawned.")
+	
+	# Emit the signal that the player has died (for other systems to listen to)
+	emit_signal("player_died")

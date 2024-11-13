@@ -1,11 +1,13 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var anim_tree = $AnimationTree
+@onready var damage_percentage = $DamagePercentageLabel
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
 var has_double_jump = true
+var player_damage = 0
 
 var isJumping = false
 
@@ -50,5 +52,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage(knockback: int, angle: int) -> void:
-	velocity.x = knockback * cos(deg_to_rad(angle))
-	velocity.y = - knockback * sin(deg_to_rad(angle))
+	player_damage += 10
+	velocity.x = ((1 + player_damage / 10) * knockback) * cos(deg_to_rad(angle))
+	velocity.y = - ((1 + player_damage / 10) * knockback) * sin(deg_to_rad(angle))
+	damage_percentage.text = str(player_damage) + "%"
