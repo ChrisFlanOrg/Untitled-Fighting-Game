@@ -5,10 +5,10 @@ extends Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_start_pressed()
 
 
 func _on_start_pressed() -> void:

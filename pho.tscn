@@ -1,12 +1,16 @@
-[gd_scene load_steps=67 format=3 uid="uid://blmdrfxwhh8gh"]
+[gd_scene load_steps=69 format=3 uid="uid://blmdrfxwhh8gh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_fr1fo"]
 [ext_resource type="Texture2D" uid="uid://btjp28cqu8drh" path="res://sprites/pho/attack/pho-attack.png" id="2_1vlr3"]
+[ext_resource type="Script" path="res://hitbox/hurtbox.gd" id="2_3tn13"]
 [ext_resource type="Texture2D" uid="uid://cl0stqeixyw05" path="res://sprites/pho/grounded/pho-jump-grounded.png" id="3_imn8v"]
 [ext_resource type="Texture2D" uid="uid://bt7uqiqwiuvr1" path="res://sprites/pho/hit/pho-hit.png" id="4_v0ugl"]
 [ext_resource type="Texture2D" uid="uid://dkishd7wkr6qx" path="res://sprites/pho/jump_downward/pho-jump-downward.png" id="6_nd1hu"]
 [ext_resource type="Texture2D" uid="uid://u1xn5nvxd5bs" path="res://sprites/pho/jump_upward/pho-jump-upward.png" id="7_o8wln"]
 [ext_resource type="Texture2D" uid="uid://xby8uxljxake" path="res://sprites/pho/idle/pho-idle.png" id="19_e6aps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n6o8"]
+size = Vector2(36.25, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvio8"]
 atlas = ExtResource("2_1vlr3")
@@ -627,9 +631,17 @@ z_index = 5
 position = Vector2(-1, -24)
 script = ExtResource("1_fr1fo")
 
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(1, 10)
+script = ExtResource("2_3tn13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_1n6o8")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nkfaj")
-animation = &"attack"
+animation = &"idle"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -647,3 +659,10 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attacking = false
 parameters/conditions/hit = false
 parameters/conditions/jump = false
+
+[node name="DamagePercentageLabel" type="Label" parent="."]
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 30.0
+offset_bottom = 11.0
+text = "0%"

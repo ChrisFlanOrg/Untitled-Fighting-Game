@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjaq3iake2tdi"]
+[gd_scene load_steps=10 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
 [ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dgwvstnrmjtp6" path="res://explosion.tscn" id="6_5y6pq"]
 [ext_resource type="PackedScene" uid="uid://fpkjab5rag02" path="res://sushi.tscn" id="6_mjlyl"]
 [ext_resource type="PackedScene" uid="uid://c2txm22bbdv4g" path="res://hazard.tscn" id="7_nke1a"]
+[ext_resource type="PackedScene" uid="uid://blmdrfxwhh8gh" path="res://pho.tscn" id="9_vldt5"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -129,3 +130,7 @@ position = Vector2(46, 193)
 
 [node name="Hazard4" parent="." instance=ExtResource("7_nke1a")]
 position = Vector2(581, 154)
+
+[node name="Player2" parent="." instance=ExtResource("9_vldt5")]
+position = Vector2(455, 187)
+deviceId = 1
