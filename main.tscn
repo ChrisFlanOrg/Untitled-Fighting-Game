@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjaq3iake2tdi"]
+[gd_scene load_steps=11 format=3 uid="uid://bjaq3iake2tdi"]
 
 [ext_resource type="PackedScene" uid="uid://bfu3du8iqtgv8" path="res://floor.tscn" id="1_28al0"]
 [ext_resource type="PackedScene" uid="uid://8nsf0aljahad" path="res://platform.tscn" id="1_g5dwr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://fpkjab5rag02" path="res://sushi.tscn" id="6_mjlyl"]
 [ext_resource type="PackedScene" uid="uid://c2txm22bbdv4g" path="res://hazard.tscn" id="7_nke1a"]
 [ext_resource type="PackedScene" uid="uid://blmdrfxwhh8gh" path="res://pho.tscn" id="9_vldt5"]
+[ext_resource type="PackedScene" uid="uid://bh3wdqsbxqahh" path="res://scenes/entities/player_v2.tscn" id="10_rpjcl"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -118,6 +119,7 @@ position = Vector2(144, 168)
 
 [node name="Player" parent="." instance=ExtResource("6_mjlyl")]
 position = Vector2(170, 199)
+deviceId = 1
 
 [node name="Hazard" parent="." instance=ExtResource("7_nke1a")]
 position = Vector2(477, 298)
@@ -133,4 +135,14 @@ position = Vector2(581, 154)
 
 [node name="Player2" parent="." instance=ExtResource("9_vldt5")]
 position = Vector2(455, 187)
-deviceId = 1
+deviceId = 2
+
+[node name="PlayerV2" parent="." instance=ExtResource("10_rpjcl")]
+position = Vector2(319, 128)
+deviceId = 0
+speed = 200
+acceleration = 700
+friction = 900
+jump_strength = 300
+gravity = 600
+terminal_velocity = 500
